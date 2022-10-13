@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.1.0"
+  apollovm:
+    dependency: transitive
+    description:
+      name: apollovm
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.31"
   args:
     dependency: transitive
     description:
@@ -29,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
+  async_extension:
+    dependency: transitive
+    description:
+      name: async_extension
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.12"
   boolean_selector:
     dependency: transitive
     description:
@@ -36,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  clock:
+    dependency: transitive
+    description:
+      name: clock
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   collection:
     dependency: transitive
     description:
@@ -64,6 +85,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  docker_commander:
+    dependency: "direct main"
+    description:
+      name: docker_commander
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.15"
+  enum_to_string:
+    dependency: transitive
+    description:
+      name: enum_to_string
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   file:
     dependency: transitive
     description:
@@ -99,6 +134,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -134,6 +176,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.12"
+  mercury_client:
+    dependency: transitive
+    description:
+      name: mercury_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.6"
   meta:
     dependency: transitive
     description:
@@ -169,6 +218,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.0"
   pool:
     dependency: transitive
     description:
@@ -183,6 +239,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  resource_portable:
+    dependency: transitive
+    description:
+      name: resource_portable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   shelf:
     dependency: transitive
     description:
@@ -253,6 +316,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  swiss_knife:
+    dependency: transitive
+    description:
+      name: swiss_knife
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.1"
   term_glyph:
     dependency: transitive
     description:
