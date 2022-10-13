@@ -14,11 +14,15 @@ void main() async {
 
   var getall = await dockerCommander.psContainerNames();
   getall ??= [];
-  if (getall.length > 2) {
-    await dockerCommander.stopContainer(getall.first);
+  if (getall.length > 1) {
+    print(getall);
+    print("delete");
+    await dockerCommander.stopContainer(getall.first); 
+  var getalls = await dockerCommander.psContainerNames();
+  print(getalls);
+    return;
   }
   print(getall);
-  return;
   // Run Docker image `hello-world` (at remote server):
   var dockerContainer = await dockerCommander.run('azka');
 
