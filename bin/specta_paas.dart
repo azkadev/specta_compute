@@ -1,22 +1,26 @@
-import 'dart:async';
+// ignore_for_file: non_constant_identifier_names, unused_local_variable
+
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:specta_paas/specta_paas.dart' as specta_paas; 
+import 'package:galaxeus_lib/galaxeus_lib.dart';
 
-void main(List<String> arguments) {
-  Timer.periodic(Duration(seconds: 2), (timer) {
-    ain([Directory.current.path]);
-    ain(["../"]);
+void main(List<String> args) async {
+  String host_name = Platform.environment["HOST_API"] ?? "wss://specta-apis.up.railway.app/ws";
+  WebSocketClient ws = WebSocketClient("ws://0.0.0.0:8080/compute");
+
+  ws.on("update", (update) {
+    print(update);
+    ws.clientSendJson({"@type": "client"});
+    print("terkirim ke server");
   });
-}
-
-void ain(List<String> arguments) {
-  try {
-  var res = Process.runSync("ls", arguments);
-  print(res.stderr);
-  print(res.stdout);
-  }catch (e){
-print(e);
-  } 
-   print(Platform.environment["azka"]);
+  await ws.connect(
+    onDataUpdate: (data) {
+      if (data is String && data.isNotEmpty) {
+        try {
+          return ws.event_emitter.emit(ws.event_name_update, null, json.decode(data));
+        } catch (e) {}
+      }
+    },
+  );
 }
