@@ -8,7 +8,14 @@ RUN apt-get update
 
 RUN apt-get install -y \
     sudo \
-    wget
+    wget \
+    curl \
+    lxc \
+    iptables \
+    ca-certificates \
+    apt-utils
+
+RUN curl -sSL https://get.docker.com/ | sh
 
 ## dart install
 RUN apt-get install apt-transport-https -y
@@ -20,6 +27,6 @@ RUN apt-get install dart -y
 
 ## compile to exe
 RUN dart pub get
-RUN dart compile exe ./bin/specta_bot_telegram.dart -o ./index
+RUN dart compile exe ./bin/specta_paas.dart -o ./index
 
 CMD ["./index"]
