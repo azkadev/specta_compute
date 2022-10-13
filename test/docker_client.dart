@@ -22,7 +22,7 @@ void main() async {
   // ...
   
   // Gets all the STDOUT as [String]. 
-  var output = dockerContainer.stdout.asString;
+  var output = dockerContainer!.stdout!.asString;
   print(output);
   
   // ...
