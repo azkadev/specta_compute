@@ -4,15 +4,22 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:galaxeus_lib/galaxeus_lib.dart';
+import 'package:specta_paas/specta_paas.dart';
 
 void main(List<String> args) async {
-  String host_name = Platform.environment["HOST_API"] ?? "wss://specta-apis.up.railway.app/ws";
+  String username = Platform.environment["username"] ?? "admin";
+  String password = Platform.environment["password"] ?? "azka123";
+  String host_name = Platform.environment["HOST_API"] ?? "wss://specta-apis.up.railway.app/compute";
   WebSocketClient ws = WebSocketClient("ws://0.0.0.0:8080/compute");
-
+  DockerCli dockerCli = DockerCli();
+  await dockerCli.init();
+  
   ws.on("update", (update) {
-    print(update);
-    ws.clientSendJson({"@type": "client"});
-    print("terkirim ke server");
+    try {
+      print(update is Map);
+    } catch (e) {
+      print(e);
+    }
   });
   await ws.connect(
     onDataUpdate: (data) {
