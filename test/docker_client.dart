@@ -2,7 +2,7 @@ import 'package:docker_commander/docker_commander.dart';
 
 void main() async {
   // Connect to a `DockerHost` running at '10.0.0.52:8099'
-  var dockerHostRemote = DockerHostRemote('127.0.0.1', 8099, username: 'admin', password: '123');
+  var dockerHostRemote = DockerHostRemote('azkadev-specta-paas-9xr7prv9p96c7pj4-8099.githubpreview.dev', 443, secure: true, username: 'admin', password: '123');
 
   // Creates a `DockerCommander` for a remote host machine:
   var dockerCommander = DockerCommander(dockerHostRemote);
@@ -23,7 +23,5 @@ void main() async {
   // Gets all the STDOUT as [String].
   var output = dockerContainer!.stdout!.asString;
   print(output);
-  print("azka");
-  
   // ...
 }
