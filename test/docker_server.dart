@@ -7,7 +7,8 @@ void main() async {
 
   // A `DockerHost` Server at port 8099:
   var hostServer = DockerHostServer(
-          (user, pass) async => authenticationTable.checkPassword(user, pass),
+          (user, pass) async{ 
+            return authenticationTable.checkPassword(user, pass);},
       8099);
 
   // Starts the server and wait initialization:
