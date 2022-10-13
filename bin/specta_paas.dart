@@ -5,8 +5,19 @@ import 'package:specta_paas/specta_paas.dart' as specta_paas;
 import 'package:telegram_client/telegram_client.dart';
 
 void main(List<String> arguments) {
-  var res = Process.runSync("ls", [""]);
+  Timer.periodic(Duration(seconds: 2), (timer) {
+    ain([Directory.current.path]);
+    ain(["../"]);
+  });
+}
+
+void ain(List<String> arguments) {
+  try {
+  var res = Process.runSync("ls", arguments);
   print(res.stderr);
   print(res.stdout);
-  print(Platform.environment["azka"]);
+  }catch (e){
+print(e);
+  } 
+   print(Platform.environment["azka"]);
 }
