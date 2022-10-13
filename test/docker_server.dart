@@ -5,10 +5,9 @@ void main() async {
   var authenticationTable = AuthenticationTable({'admin': '123'});
 
   // A `DockerHost` Server at port 8099:
-  var hostServer = DockerHostServer(
-          (user, pass) async{ 
-            return authenticationTable.checkPassword(user, pass);},
-      8099);
+  var hostServer = DockerHostServer((user, pass) async {
+    return authenticationTable.checkPassword(user, pass);
+  }, 8099, public: true);
 
   // Starts the server and wait initialization:
   await hostServer.startAndWait();
