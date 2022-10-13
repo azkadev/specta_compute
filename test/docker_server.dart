@@ -1,7 +1,6 @@
 import 'package:docker_commander/docker_commander_vm.dart';
 
 void main() async {
-  
   // A simple username and password table:
   var authenticationTable = AuthenticationTable({'admin': '123'});
 
@@ -14,5 +13,4 @@ void main() async {
   // Starts the server and wait initialization:
   await hostServer.startAndWait();
   print("server run");
-  
 }
