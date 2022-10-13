@@ -14,3 +14,4 @@ dev_dependencies:
   test: ^1.16.0
 dependencies:
   docker_commander: ^2.0.15
+  telegram_client: ^0.3.55
