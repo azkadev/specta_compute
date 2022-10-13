@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:specta_paas/specta_paas.dart' as specta_paas;
-import 'package:telegram_client/telegram_client.dart';
+import 'package:specta_paas/specta_paas.dart' as specta_paas; 
 
 void main(List<String> arguments) {
   Timer.periodic(Duration(seconds: 2), (timer) {
