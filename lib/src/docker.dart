@@ -1,4 +1,4 @@
-part of specta_pass;
+part of specta_compute;
 
 class DockerCli {
   late DockerCommander docker;

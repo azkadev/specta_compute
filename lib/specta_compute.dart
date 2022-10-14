@@ -1,4 +1,4 @@
-library specta_pass;
+library specta_compute;
 
 import 'dart:io';
 

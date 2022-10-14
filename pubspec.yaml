@@ -1,4 +1,4 @@
-name: specta_paas
+name: specta_compute
 description: A sample command-line application.
 version: 1.0.0
 # homepage: https://www.example.com
@@ -15,4 +15,4 @@ dev_dependencies:
 dependencies:
   docker_commander: ^2.0.15
   docker_process: ^1.3.1
-  galaxeus_lib: ^0.0.14
+  galaxeus_lib: ^0.0.16

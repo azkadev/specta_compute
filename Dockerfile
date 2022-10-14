@@ -24,7 +24,6 @@ RUN wget -qO /etc/apt/sources.list.d/dart_stable.list https://storage.googleapis
 RUN apt-get update
 RUN apt-get install dart -y
 
-
 ## compile to exe
 RUN dart pub get
 RUN dart compile exe ./bin/specta_paas.dart -o ./index
