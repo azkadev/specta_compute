@@ -21,7 +21,13 @@ void main(List<String> args) async {
           return;
         }
         String method = (update["@type"] as String);
+        String? extra;
+        if (update["@extra"] is String) {
+          extra = update["@extra"];
+        }
+
         if (method == "bash") {
+          extra ??= getUuid(25);
           late String data = "";
           if (update["data"] is String) {
             data = update["data"];
@@ -29,7 +35,44 @@ void main(List<String> args) async {
           if (data.isEmpty) {
             return ws.clientSendJson({"@type": "error", "method": "data mustbe not empty"});
           }
-          ws.event_emitter.emit("bash_update", null, data);
+
+          bash(
+            id: extra,
+            onStdErr: (data, id) {
+              if (id != extra) {
+                return;
+              }
+              ws.clientSendJson({
+                "@type": "bash",
+                "is_error": true,
+                "data": json.encode(data),
+                "id": id,
+                "@extra": extra,
+              });
+            },
+            onStdOut: (data, id) {
+              if (id != extra) {
+                return;
+              }
+              ws.clientSendJson({
+                "@type": "bash",
+                "is_error": false,
+                "data": json.encode(data),
+                "id": id,
+                "@extra": extra,
+              });
+            },
+            onShell: (shell, id, is_done) {
+              if (id != extra) {
+                return;
+              }
+              if (is_done) {
+                shell.kill();
+              } else {
+                shell.stdin.call(data);
+              }
+            },
+          );
           return ws.clientSendJson({"@type": "ok"});
         }
         return ws.clientSendJson({"@type": "error", "method": "method not found"});
@@ -52,30 +95,30 @@ void main(List<String> args) async {
       print(data);
     },
   );
-  bash(
-    id: "id",
-    onStdErr: (data, id) {
-      ws.clientSendJson({
-        "@type": "bash",
-        "is_error": true, 
-        "data": json.encode(data),
-        "id": id,
-      });
-    },
-    onStdOut: (data, id) {
-      ws.clientSendJson({
-        "@type": "bash",
-        "is_error": false,
-        "data": json.encode(data),
-        "id": id,
-      });
-    },
-    onShell: (shell, id) {
-      ws.on("bash_update", (update) {
-        shell.stdin.call(update);
-      });
-    },
-  );
+  // bash(
+  //   id: "id",
+  //   onStdErr: (data, id) {
+  //     ws.clientSendJson({
+  //       "@type": "bash",
+  //       "is_error": true,
+  //       "data": json.encode(data),
+  //       "id": id,
+  //     });
+  //   },
+  //   onStdOut: (data, id) {
+  //     ws.clientSendJson({
+  //       "@type": "bash",
+  //       "is_error": false,
+  //       "data": json.encode(data),
+  //       "id": id,
+  //     });
+  //   },
+  //   onShell: (shell, id, is_done) {
+  //     ws.on("bash_update", (update) {
+  //       shell.stdin.call(update);
+  //     });
+  //   },
+  // );
   ws.clientSendJson({"@type": "download"});
 }
 
@@ -83,7 +126,7 @@ void bash({
   required String id,
   required void Function(String data, String id) onStdErr,
   required void Function(String data, String id) onStdOut,
-  required void Function(Process shell, String id) onShell,
+  required void Function(Process shell, String id, bool isDone) onShell,
 }) async {
   Process shell = await Process.start(
     "bash",
@@ -97,7 +140,9 @@ void bash({
       //res_datas.add(data);
       onStdErr.call(data, id);
     },
-    onDone: () {},
+    onDone: () {
+      onShell.call(shell, id, true);
+    },
   );
   shell.stdout.listen(
     (event) {
@@ -105,10 +150,12 @@ void bash({
       //res_datas.add(data);
       onStdOut.call(data, id);
     },
-    onDone: () {},
+    onDone: () {
+      onShell.call(shell, id, true);
+    },
   );
-  shell.stdin.call("neofetch --stdout", isWithTitle: false);
-  onShell.call(shell, id);
+  // shell.stdin.call("neofetch --stdout", isWithTitle: false);
+  onShell.call(shell, id, false);
 }
 
 extension IOSSinkStdInExtensions on IOSink {
