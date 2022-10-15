@@ -27,7 +27,7 @@ void main(List<String> args) async {
     }
   });
   await ws.connect(
-    onDataUpdate: (data) { 
+    onDataUpdate: (data) {
       if (data is String && data.isNotEmpty) {
         try {
           return ws.event_emitter.emit(ws.event_name_update, null, json.decode(data));
