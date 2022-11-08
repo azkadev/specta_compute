@@ -4,12 +4,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:galaxeus_lib/galaxeus_lib.dart';
-import 'package:specta_compute/specta_compute.dart';
 
 void main(List<String> args) async {
   String username = Platform.environment["username"] ?? "admin";
   String password = Platform.environment["password"] ?? "azka123";
-  String host_name = Platform.environment["HOST_API"] ?? "wss://specta-apis.up.railway.app/compute";
+  String host_name = Platform.environment["HOST_API"] ?? "wss://specta-apis.up.railway.app/app";
   // host_name = "ws://127.0.0.1:8080/compute";
   WebSocketClient ws = WebSocketClient(host_name);
   // DockerCli dockerCli = DockerCli();
@@ -25,7 +24,7 @@ void main(List<String> args) async {
         if (update["@extra"] is String) {
           extra = update["@extra"];
         }
-
+        return print(update);
         if (method == "bash") {
           extra ??= getUuid(25);
           late String data = "";
@@ -43,9 +42,8 @@ void main(List<String> args) async {
                 return;
               }
               ws.clientSendJson({
-                "@type": "updateBash",
+                "@type": "bash",
                 "is_error": true,
-                "is_finished": false,
                 "data": json.encode(data),
                 "id": id,
                 "@extra": extra,
@@ -56,9 +54,8 @@ void main(List<String> args) async {
                 return;
               }
               ws.clientSendJson({
-                "@type": "updateBash",
+                "@type": "bash",
                 "is_error": false,
-                "is_finished": false,
                 "data": json.encode(data),
                 "id": id,
                 "@extra": extra,
@@ -69,13 +66,6 @@ void main(List<String> args) async {
                 return;
               }
               if (is_done) {
-                ws.clientSendJson({
-                  "@type": "updateBash",
-                  "is_error": true,
-                  "is_finished": true, 
-                  "id": id,
-                  "@extra": extra,
-                });
                 shell.kill();
               } else {
                 shell.stdin.call(data);
@@ -109,9 +99,8 @@ void main(List<String> args) async {
                 return;
               }
               ws.clientSendJson({
-                "@type": "updateExec",
+                "@type": "exec",
                 "is_error": true,
-                "is_finished": true,
                 "data": json.encode(data),
                 "id": id,
                 "@extra": extra,
@@ -125,9 +114,8 @@ void main(List<String> args) async {
                 return;
               }
               ws.clientSendJson({
-                "@type": "updateExec",
+                "@type": "exec",
                 "is_error": false,
-                "is_finished": true,
                 "data": json.encode(data),
                 "id": id,
                 "@extra": extra,
@@ -161,9 +149,8 @@ void main(List<String> args) async {
                 return;
               }
               ws.clientSendJson({
-                "@type": "updateExecRun",
+                "@type": "execRun",
                 "is_error": true,
-                "is_finished": false,
                 "data": json.encode(data),
                 "id": id,
                 "@extra": extra,
@@ -177,9 +164,8 @@ void main(List<String> args) async {
                 return;
               }
               ws.clientSendJson({
-                "@type": "updateExecRun",
+                "@type": "execRun",
                 "is_error": false,
-                "is_finished": false,
                 "data": json.encode(data),
                 "id": id,
                 "@extra": extra,
@@ -190,14 +176,6 @@ void main(List<String> args) async {
                 return;
               }
               if (is_done) {
-                ws.clientSendJson({
-                  "@type": "updateExecRun",
-                  "is_error": false,
-                  "is_finished": true,
-                  "data": "",
-                  "id": id,
-                  "@extra": extra,
-                });
                 shell.kill();
               } else {}
             },
@@ -267,7 +245,7 @@ void bash({
     (event) {
       var data = utf8.decode(event);
       //res_datas.add(data);
-      onStdErr.call(resultExecReplace(data), id);
+      onStdErr.call(data, id);
     },
     onDone: () {
       onShell.call(shell, id, true);
@@ -277,7 +255,7 @@ void bash({
     (event) {
       var data = utf8.decode(event);
       //res_datas.add(data);
-      onStdOut.call(resultExecReplace(data), id);
+      onStdOut.call(data, id);
     },
     onDone: () {
       onShell.call(shell, id, true);
@@ -305,7 +283,7 @@ void execRun({
     (event) {
       var data = utf8.decode(event);
       //res_datas.add(data);
-      onStdErr.call(resultExecReplace(data), id);
+      onStdErr.call(data, id);
     },
     onDone: () {
       onShell.call(shell, id, true);
@@ -315,7 +293,7 @@ void execRun({
     (event) {
       var data = utf8.decode(event);
       //res_datas.add(data);
-      onStdOut.call(resultExecReplace(data), id);
+      onStdOut.call(data, id);
     },
     onDone: () {
       onShell.call(shell, id, true);
@@ -338,12 +316,8 @@ void exec({
     includeParentEnvironment: false,
     runInShell: true,
   );
-  onStdErr.call(resultExecReplace(shell.stderr), id);
-  onStdOut.call(resultExecReplace(shell.stdout), id);
-}
-
-String resultExecReplace(dynamic data) {
-  return data.toString().replaceAll(RegExp(r"(@railway)"), "@specta_cloud").replaceAll(RegExp(r"(railway)"), "specta_cloud");
+  onStdErr.call(shell.stderr, id);
+  onStdOut.call(shell.stdout, id);
 }
 
 extension IOSSinkStdInExtensions on IOSink {
