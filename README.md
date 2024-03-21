@@ -1,81 +1,42 @@
-<p align="center">
-    <a href="https://github.com/azkadev">
-        <img src="https://telegra.ph/file/e90bdeab8390b8c0d9df2.png" alt="Specta"
-            width="312"
-            height="312">
-    </a>
-    <br>
-    <a href="https://youtube.com/c/galaxeus">
-        <img
-            src="https://raw.githubusercontent.com/azkadev/azkadev/main/assets/images/powered_galaxeus.png"
-            alt="galaxeus"
-            width="350"
-            height="80"
-        >
-    </a>
-    <br>
-    <b>Specta Compute Engine</b>
-    <br>
-</p>
- 
+PHAgYWxpZ249ImNlbnRlciI+CiAgICA8YSBocmVmPSJodHRwczovL2dpdGh1
+Yi5jb20vYXprYWRldiI+CiAgICAgICAgPGltZyBzcmM9Imh0dHBzOi8vdGVs
+ZWdyYS5waC9maWxlL2U5MGJkZWFiODM5MGI4YzBkOWRmMi5wbmciIGFsdD0i
+U3BlY3RhIgogICAgICAgICAgICB3aWR0aD0iMzEyIgogICAgICAgICAgICBo
+ZWlnaHQ9IjMxMiI+CiAgICA8L2E+CiAgICA8YnI+CiAgICA8YSBocmVmPSJo
+dHRwczovL3lvdXR1YmUuY29tL2MvZ2FsYXhldXMiPgogICAgICAgIDxpbWcK
+ICAgICAgICAgICAgc3JjPSJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVu
+dC5jb20vYXprYWRldi9hemthZGV2L21haW4vYXNzZXRzL2ltYWdlcy9wb3dl
+cmVkX2dhbGF4ZXVzLnBuZyIKICAgICAgICAgICAgYWx0PSJnYWxheGV1cyIK
+ICAgICAgICAgICAgd2lkdGg9IjM1MCIKICAgICAgICAgICAgaGVpZ2h0PSI4
+MCIKICAgICAgICA+CiAgICA8L2E+CiAgICA8YnI+CiAgICA8Yj5TcGVjdGEg
+Q29tcHV0ZSBFbmdpbmU8L2I+CiAgICA8YnI+CjwvcD4KIAoKIyBTcGVjdGEg
+Q29tcHV0ZSBFbmdpbmUg8J+UpQoKPiBCYWNrZW5kIGNsb3VkIGNvbXB1dGUg
+dW50dWsgbWVtYnVhdCBwYWFzIChwbGF0Zm9ybSBhcyBzZXJ2aWNlKQoKIyMg
+RGVtbyAvIFF1aWNrIG92ZXJ2aWV3CgojIyBTdGF0dXMKPiBiZWx1bSBzaWFw
+IGRpIHJ1biBwdWJsaWMKCiMjIFN0YXR1cyBzY3JpcHQKPiBzY3JpcHQgbWFz
+aWggZGFsYW0gdGFoYXAgdWppIGNvYmEgCgotLS0KIyMgcnVuCgoxLiBDbG9u
+ZSByZXBvIGZpcnN0CiAgIGBgYGJhc2gKICAgZ2l0IGNsb25lIGh0dHBzOi8v
+Z2l0aHViLmNvbS9hemthZGV2L3NwZWN0YV9jb21wdXRlLmdpdAogICBjZCBz
+cGVjdGFfY29tcHV0ZQogICBgYGAKCjIuIFJ1biB3aXRoIERvY2tlcgogICBg
+YGBiYXNoCiAgIGRvY2tlciBidWlsZCAuIC10IHNwZWN0YV9jb21wdXRlCiAg
+IGRvY2tlciBydW4gLWl0IHNwZWN0YV9jb21wdXRlCiAgIGBgYAozLiBSdW4g
+d2l0aCBkYXJ0CiAgIGBgYGJhc2gKICAgZGFydCBwdWIgZ2V0CiAgIGRhcnQg
+cnVuCiAgIGBgYAoKNC4gcnVuIG5hdGl2ZSBleGUKICAgIGBgYGJhc2gKICAg
+IGRhcnQgcHViIGdldAogICAgZGFydCBjb21waWxlIGV4ZSAuL2Jpbi9zcGVj
+dGFfY29tcHV0ZS5kYXJ0IC1vIC4vaW5kZXgKICAgIGNobW9kIDc3NyAuL2lu
+ZGV4CiAgICAuL2luZGV4CiAgICBgYGAKLS0tCgojIyMgRmVhdHVyZXMKCjEu
+IFt4XSAuCgptb3JlLi4uCgojIyMgU3VwcG9ydCAmIERpc2t1c2kg8J+RpQoK
+PiBbRGlzY3Vzc2lvbiBHcm91cF0oaHR0cHM6Ly90Lm1lL2RldmVsb3Blcl9i
+YXNlX2dyb3VuZCkgYW5kIFtEZXZlbG9wZXIgQ2hhbm5lbF0oaHR0cHM6Ly90
+Lm1lL2F6a2FkZXYpCgoKIyMgTGljZW5zZQpbIVtMaWNlbnNlXShodHRwczov
+L3d3dy5nbnUub3JnL2dyYXBoaWNzL2FncGx2My0xNTV4NTEucG5nKV0oTElD
+RU5TRSkgICAKU3BlY3RhIENvbXB1dGUgIGlzIGxpY2Vuc2VkIHVuZGVyIFtH
+TlUgQWZmZXJvIEdlbmVyYWwgUHVibGljIExpY2Vuc2VdKGh0dHBzOi8vd3d3
+LmdudS5vcmcvbGljZW5zZXMvYWdwbC0zLjAuZW4uaHRtbCkgdjMgb3IgbGF0
+ZXIuCgoKIyMjIENvcHlyaWdodCAmIExpY2Vuc2Ug8J+RrgoKKiBDb3B5cmln
+aHQgKEMpIDIwMjIgYnkgW0F6a2FkZXZdKGh0dHBzOi8vZ2l0aHViLmNvbS9h
+emthZGV2KSDinaTvuI/vuI8=
 
-# Specta Compute Engine 🔥
-
-> Backend cloud compute untuk membuat paas (platform as service)
-
-## Demo / Quick overview
-
-## Status
-> belum siap di run public
-
-## Status script
-> script masih dalam tahap uji coba 
-
----
-## run
-
-1. Clone repo first
-   ```bash
-   git clone https://github.com/azkadev/specta_compute.git
-   cd specta_compute
-   ```
-
-2. Run with Docker
-   ```bash
-   docker build . -t specta_compute
-   docker run -it specta_compute
-   ```
-3. Run with dart
-   ```bash
-   dart pub get
-   dart run
-   ```
-
-4. run native exe
-    ```bash
-    dart pub get
-    dart compile exe ./bin/specta_compute.dart -o ./index
-    chmod 777 ./index
-    ./index
-    ```
----
-
-### Features
-
-1. [x] .
-
-more...
-
-### Support & Diskusi 👥
-
-> [Discussion Group](https://t.me/developer_base_ground) and [Developer Channel](https://t.me/azkadev)
-
-
-## License
-[![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
-Specta Compute  is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
-
-
-### Copyright & License 👮
-
-* Copyright (C) 2022 by [Azkadev](https://github.com/azkadev) ❤️️
+<!-- START GLOBAL CORPORATION -->
+404: Not Found
+<!-- END GLOBAL CORPORATION -->
